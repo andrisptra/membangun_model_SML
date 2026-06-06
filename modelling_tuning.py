@@ -34,9 +34,8 @@ matplotlib.use("Agg")  # Use non-interactive backend for plotting
 import mlflow
 import mlflow.sklearn
 import seaborn as sns
-from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
