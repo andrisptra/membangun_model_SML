@@ -15,9 +15,8 @@ import warnings
 import mlflow
 import mlflow.sklearn
 import pandas as pd
-from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
@@ -70,18 +69,6 @@ def load_data(train_path, test_path):
 # MODEL TRAINING
 # ---------------------------------------------------
 MODELS = {
-    "LogisticRegression": Pipeline(
-        [
-            ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
-            ("clf", LogisticRegression(random_state=RANDOM_STATE)),
-        ]
-    ),
-    "RandomForestClassifier": Pipeline(
-        [
-            ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
-            ("clf", RandomForestClassifier(random_state=RANDOM_STATE)),
-        ]
-    ),
     "GradientBoostingClassifier": Pipeline(
         [
             ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),

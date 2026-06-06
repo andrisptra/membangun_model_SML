@@ -174,32 +174,6 @@ def save_feature_importance(pipeline, model_name: str, top_n: int = 20) -> str:
 # Models + Hyperparameter Grids
 # ---------------------------------------------------
 MODEL_CONFIGS = {
-    "LogisticRegression": {
-        "pipeline": Pipeline(
-            [
-                ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
-                ("clf", LogisticRegression(random_state=RANDOM_STATE)),
-            ]
-        ),
-        "param_grid": {
-            "tfidf__max_features": [3000, 5000],
-            "clf__C": [0.1, 1, 10],
-            "clf__solver": ["lbfgs", "saga"],
-        },
-    },
-    "RandomForestClassifier": {
-        "pipeline": Pipeline(
-            [
-                ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
-                ("clf", RandomForestClassifier(random_state=RANDOM_STATE)),
-            ]
-        ),
-        "param_grid": {
-            "tfidf__max_features": [3000, 5000],
-            "clf__n_estimators": [100, 200],
-            "clf__max_depth": [None, 10],
-        },
-    },
     "GradientBoostingClassifier": {
         "pipeline": Pipeline(
             [
