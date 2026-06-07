@@ -1,7 +1,7 @@
 """
 ==================
 Melatih model Machine Learning menggunakan MLflow autolog (Basic)
-Dataset: ASAP2_train
+Dataset: train_preprocessed.csv
 
 Usage:
     python modelling.py
@@ -15,8 +15,8 @@ import warnings
 import mlflow
 import mlflow.sklearn
 import pandas as pd
-from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
@@ -27,8 +27,8 @@ from sklearn.metrics import (
 from sklearn.pipeline import Pipeline
 
 # from sklearn.preprocessing import LabelEncoder
-
 warnings.filterwarnings("ignore")
+
 
 # ---------------------------------------------------
 # CONFIG
@@ -37,13 +37,13 @@ TRAIN_PATH = "asap2_preprocessing/train_preprocessed.csv"
 TEST_PATH = "asap2_preprocessing/test_preprocessed.csv"
 EXPERIMENT_NAME = "ASAP2_Essay_Score_Classification"
 RANDOM_STATE = 42
+URI = "http://localhost:5000"
+
 
 # ---------------------------------------------------
 # Setup MLflow
 # ---------------------------------------------------
-mlflow.set_tracking_uri(
-    "http://localhost:5000"
-)  # Pastikan MLflow server berjalan di localhost:5000
+mlflow.set_tracking_uri(URI)
 mlflow.set_experiment(EXPERIMENT_NAME)
 
 
@@ -51,6 +51,7 @@ mlflow.set_experiment(EXPERIMENT_NAME)
 # Load Data
 # ---------------------------------------------------
 def load_data(train_path, test_path):
+    print("-" * 50)
     print("Loading data...")
     train_df = pd.read_csv(train_path)
     test_df = pd.read_csv(test_path)
@@ -62,6 +63,8 @@ def load_data(train_path, test_path):
 
     print(f"Train data: {X_train.shape[0]} samples")
     print(f"Test data: {X_test.shape[0]} samples")
+    print("-" * 50)
+
     return X_train, y_train, X_test, y_test
 
 
@@ -69,15 +72,12 @@ def load_data(train_path, test_path):
 # MODEL TRAINING
 # ---------------------------------------------------
 MODELS = {
-    "GradientBoostingClassifier": Pipeline(
+    "LogisticRegression": Pipeline(
         [
             ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
-            (
-                "clf",
-                GradientBoostingClassifier(n_estimators=100, random_state=RANDOM_STATE),
-            ),
+            ("clf", LogisticRegression(random_state=RANDOM_STATE)),
         ]
-    ),
+    )
 }
 
 
@@ -85,6 +85,7 @@ MODELS = {
 # Train with MLflow autolog
 # ---------------------------------------------------
 def train_mode(name, pipeline, X_train, X_test, y_train, y_test):
+    print("-" * 50)
     print(f"Training model: {name}")
     mlflow.sklearn.autolog()
 
@@ -104,6 +105,7 @@ def train_mode(name, pipeline, X_train, X_test, y_train, y_test):
         print(class_report)
 
     print(f"Finished training {name}\n")
+    print("-" * 50)
 
 
 # ---------------------------------------------------

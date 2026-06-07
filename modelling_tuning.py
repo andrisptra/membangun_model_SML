@@ -2,12 +2,12 @@
 modelling_tuning.py
 ====================
 Melatih model ML dengan:
-  - Hyperparameter tuning (GridSearchCV)
+  - Hyperparameter tuning (Bayesian Optimization atau GridSearchCV)
   - Manual logging MLflow (bukan autolog)
   - DagsHub remote tracking
   - Artefak tambahan: confusion matrix plot + classification report JSON
 
-Dataset: ASAP2 Essay Score Classification
+Dataset: train_preprocessed.csv & test_preprocessed.csv (hasil preprocessing sebelumnya)
 
 Setup DagsHub:
     1. Buat akun di https://dagshub.com
@@ -34,7 +34,7 @@ matplotlib.use("Agg")  # Use non-interactive backend for plotting
 import mlflow
 import mlflow.sklearn
 import seaborn as sns
-from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import (
     accuracy_score,
@@ -44,7 +44,7 @@ from sklearn.metrics import (
     precision_score,
     recall_score,
 )
-from sklearn.model_selection import GridSearchCV
+from skopt import BayesSearchCV
 from sklearn.pipeline import Pipeline
 
 warnings.filterwarnings("ignore")
@@ -173,22 +173,19 @@ def save_feature_importance(pipeline, model_name: str, top_n: int = 20) -> str:
 # Models + Hyperparameter Grids
 # ---------------------------------------------------
 MODEL_CONFIGS = {
-    "GradientBoostingClassifier": {
+    "LogisticRegression": {
         "pipeline": Pipeline(
             [
                 ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
                 (
                     "clf",
-                    GradientBoostingClassifier(
-                        n_estimators=100, random_state=RANDOM_STATE
-                    ),
+                    LogisticRegression(random_state=RANDOM_STATE),
                 ),
             ]
         ),
         "param_grid": {
             "tfidf__max_features": [3000, 5000],
-            "clf__n_estimators": [100, 200],
-            "clf__learning_rate": [0.05, 0.1],
+            "clf__C": [0.1, 1, 10],
         },
     },
 }
@@ -207,16 +204,16 @@ def train_and_tune(name, config, X_train, X_test, y_train, y_test):
     pipeline = config["pipeline"]
     param_grid = config["param_grid"]
 
-    # Hyperparameter tuning with GridSearchCV
-    print(" Starting GridSearchCV...")
-    grid_search = GridSearchCV(
+    # Hyperparameter tuning with Bayesian Optimization
+    print(" Starting Bayesian Optimization...")
+    bayes_search = BayesSearchCV(
         pipeline, param_grid, cv=3, n_jobs=-1, verbose=1, scoring="f1_weighted"
     )
-    grid_search.fit(X_train, y_train)
+    bayes_search.fit(X_train, y_train)
 
-    best_model = grid_search.best_estimator_
-    best_params = grid_search.best_params_
-    best_cv_f1 = grid_search.best_score_
+    best_model = bayes_search.best_estimator_
+    best_params = bayes_search.best_params_
+    best_cv_f1 = bayes_search.best_score_
 
     print(f" Best CV F1     : {best_cv_f1:.4f}")
     print(f" Best params    : {best_params}")

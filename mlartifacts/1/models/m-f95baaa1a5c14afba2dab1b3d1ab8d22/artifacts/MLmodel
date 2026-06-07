@@ -1,4 +1,4 @@
-artifact_path: mlflow-artifacts:/1/models/m-9f8c2cbbdde74990b179c50edd09cb69/artifacts
+artifact_path: mlflow-artifacts:/1/models/m-f95baaa1a5c14afba2dab1b3d1ab8d22/artifacts
 flavors:
   python_function:
     env:
@@ -16,14 +16,14 @@ flavors:
     skops_trusted_types: null
 is_signature_from_type_hint: false
 mlflow_version: 3.12.0
-model_id: m-9f8c2cbbdde74990b179c50edd09cb69
-model_size_bytes: 1028422
-model_uuid: m-9f8c2cbbdde74990b179c50edd09cb69
+model_id: m-f95baaa1a5c14afba2dab1b3d1ab8d22
+model_size_bytes: 439414
+model_uuid: m-f95baaa1a5c14afba2dab1b3d1ab8d22
 prompts: null
-run_id: 8fa7088e087e48809fbe2d6de495d320
+run_id: c8968a3786be45aca97d5b9723ab5620
 signature:
   inputs: '[{"type": "string", "name": "processed_text", "required": true}]'
   outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "object", "shape": [-1]}}]'
   params: null
 type_hint_from_example: false
-utc_time_created: '2026-06-06 03:29:35.057486'
+utc_time_created: '2026-06-07 04:36:24.192210'

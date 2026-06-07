@@ -557,7 +557,7 @@ a.param-doc-link::before {
 }
 </style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;tfidf&#x27;,
                  TfidfVectorizer(max_features=5000, ngram_range=(1, 2))),
-                (&#x27;clf&#x27;, GradientBoostingClassifier(random_state=42))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+                (&#x27;clf&#x27;, LogisticRegression(random_state=42))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
@@ -977,7 +977,7 @@ a.param-doc-link::before {
                 </table>
             </details>
         </div>
-    </div></div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GradientBoostingClassifier</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">?<span>Documentation for GradientBoostingClassifier</span></a></div></label><div class="sk-toggleable__content fitted" data-param-prefix="clf__">
+    </div></div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a></div></label><div class="sk-toggleable__content fitted" data-param-prefix="clf__">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
@@ -986,62 +986,30 @@ a.param-doc-link::before {
                     
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('loss',
+                 onclick="copyToClipboard('penalty',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=loss,-%7B%27log_loss%27%2C%20%27exponential%27%7D%2C%20default%3D%27log_loss%27">
-            loss
-            <span class="param-doc-description">loss: {'log_loss', 'exponential'}, default='log_loss'<br><br>The loss function to be optimized. 'log_loss' refers to binomial and<br>multinomial deviance, the same as used in logistic regression.<br>It is a good choice for classification with probabilistic outputs.<br>For loss 'exponential', gradient boosting recovers the AdaBoost algorithm.</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=penalty,-%7B%27l1%27%2C%20%27l2%27%2C%20%27elasticnet%27%2C%20None%7D%2C%20default%3D%27l2%27">
+            penalty
+            <span class="param-doc-description">penalty: {'l1', 'l2', 'elasticnet', None}, default='l2'<br><br>Specify the norm of the penalty:<br><br>- `None`: no penalty is added;<br>- `'l2'`: add a L2 penalty term and it is the default choice;<br>- `'l1'`: add a L1 penalty term;<br>- `'elasticnet'`: both L1 and L2 penalty terms are added.<br><br>.. warning::<br>   Some penalties may not work with some solvers. See the parameter<br>   `solver` below, to know the compatibility between the penalty and<br>   solver.<br><br>.. versionadded:: 0.19<br>   l1 penalty with SAGA solver (allowing 'multinomial' + L1)<br><br>.. deprecated:: 1.8<br>   `penalty` was deprecated in version 1.8 and will be removed in 1.10.<br>   Use `l1_ratio` instead. `l1_ratio=0` for `penalty='l2'`, `l1_ratio=1` for<br>   `penalty='l1'` and `l1_ratio` set to any float between 0 and 1 for<br>   `'penalty='elasticnet'`.</span>
         </a>
     </td>
-            <td class="value">&#x27;log_loss&#x27;</td>
+            <td class="value">&#x27;deprecated&#x27;</td>
         </tr>
     
 
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('learning_rate',
+                 onclick="copyToClipboard('C',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=learning_rate,-float%2C%20default%3D0.1">
-            learning_rate
-            <span class="param-doc-description">learning_rate: float, default=0.1<br><br>Learning rate shrinks the contribution of each tree by `learning_rate`.<br>There is a trade-off between learning_rate and n_estimators.<br>Values must be in the range `[0.0, inf)`.<br><br>For an example of the effects of this parameter and its interaction with<br>``subsample``, see<br>:ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_regularization.py`.</span>
-        </a>
-    </td>
-            <td class="value">0.1</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('n_estimators',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=n_estimators,-int%2C%20default%3D100">
-            n_estimators
-            <span class="param-doc-description">n_estimators: int, default=100<br><br>The number of boosting stages to perform. Gradient boosting<br>is fairly robust to over-fitting so a large number usually<br>results in better performance.<br>Values must be in the range `[1, inf)`.</span>
-        </a>
-    </td>
-            <td class="value">100</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('subsample',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=subsample,-float%2C%20default%3D1.0">
-            subsample
-            <span class="param-doc-description">subsample: float, default=1.0<br><br>The fraction of samples to be used for fitting the individual base<br>learners. If smaller than 1.0 this results in Stochastic Gradient<br>Boosting. `subsample` interacts with the parameter `n_estimators`.<br>Choosing `subsample < 1.0` leads to a reduction of variance<br>and an increase in bias.<br>Values must be in the range `(0.0, 1.0]`.</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=C,-float%2C%20default%3D1.0">
+            C
+            <span class="param-doc-description">C: float, default=1.0<br><br>Inverse of regularization strength; must be a positive float.<br>Like in support vector machines, smaller values specify stronger<br>regularization. `C=np.inf` results in unpenalized logistic regression.<br>For a visual example on the effect of tuning the `C` parameter<br>with an L1 penalty, see:<br>:ref:`sphx_glr_auto_examples_linear_model_plot_logistic_path.py`.</span>
         </a>
     </td>
             <td class="value">1.0</td>
@@ -1050,46 +1018,78 @@ a.param-doc-link::before {
 
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('criterion',
+                 onclick="copyToClipboard('l1_ratio',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=criterion,-%7B%27friedman_mse%27%2C%20%27squared_error%27%7D%2C%20default%3D%27friedman_mse%27">
-            criterion
-            <span class="param-doc-description">criterion: {'friedman_mse', 'squared_error'}, default='friedman_mse'<br><br>The function to measure the quality of a split. Supported criteria are<br>'friedman_mse' for the mean squared error with improvement score by<br>Friedman, 'squared_error' for mean squared error. The default value of<br>'friedman_mse' is generally the best as it can provide a better<br>approximation in some cases.<br><br>.. versionadded:: 0.18</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=l1_ratio,-float%2C%20default%3D0.0">
+            l1_ratio
+            <span class="param-doc-description">l1_ratio: float, default=0.0<br><br>The Elastic-Net mixing parameter, with `0 <= l1_ratio <= 1`. Setting<br>`l1_ratio=1` gives a pure L1-penalty, setting `l1_ratio=0` a pure L2-penalty.<br>Any value between 0 and 1 gives an Elastic-Net penalty of the form<br>`l1_ratio * L1 + (1 - l1_ratio) * L2`.<br><br>.. warning::<br>   Certain values of `l1_ratio`, i.e. some penalties, may not work with some<br>   solvers. See the parameter `solver` below, to know the compatibility between<br>   the penalty and solver.<br><br>.. versionchanged:: 1.8<br>    Default value changed from None to 0.0.<br><br>.. deprecated:: 1.8<br>    `None` is deprecated and will be removed in version 1.10. Always use<br>    `l1_ratio` to specify the penalty type.</span>
         </a>
     </td>
-            <td class="value">&#x27;friedman_mse&#x27;</td>
+            <td class="value">0.0</td>
         </tr>
     
 
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('min_samples_split',
+                 onclick="copyToClipboard('dual',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=min_samples_split,-int%20or%20float%2C%20default%3D2">
-            min_samples_split
-            <span class="param-doc-description">min_samples_split: int or float, default=2<br><br>The minimum number of samples required to split an internal node:<br><br>- If int, values must be in the range `[2, inf)`.<br>- If float, values must be in the range `(0.0, 1.0]` and `min_samples_split`<br>  will be `ceil(min_samples_split * n_samples)`.<br><br>.. versionchanged:: 0.18<br>   Added float values for fractions.</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=dual,-bool%2C%20default%3DFalse">
+            dual
+            <span class="param-doc-description">dual: bool, default=False<br><br>Dual (constrained) or primal (regularized, see also<br>:ref:`this equation <regularized-logistic-loss>`) formulation. Dual formulation<br>is only implemented for l2 penalty with liblinear solver. Prefer `dual=False`<br>when n_samples > n_features.</span>
         </a>
     </td>
-            <td class="value">2</td>
+            <td class="value">False</td>
         </tr>
     
 
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('min_samples_leaf',
+                 onclick="copyToClipboard('tol',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=min_samples_leaf,-int%20or%20float%2C%20default%3D1">
-            min_samples_leaf
-            <span class="param-doc-description">min_samples_leaf: int or float, default=1<br><br>The minimum number of samples required to be at a leaf node.<br>A split point at any depth will only be considered if it leaves at<br>least ``min_samples_leaf`` training samples in each of the left and<br>right branches.  This may have the effect of smoothing the model,<br>especially in regression.<br><br>- If int, values must be in the range `[1, inf)`.<br>- If float, values must be in the range `(0.0, 1.0)` and `min_samples_leaf`<br>  will be `ceil(min_samples_leaf * n_samples)`.<br><br>.. versionchanged:: 0.18<br>   Added float values for fractions.</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=tol,-float%2C%20default%3D1e-4">
+            tol
+            <span class="param-doc-description">tol: float, default=1e-4<br><br>Tolerance for stopping criteria.</span>
+        </a>
+    </td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('fit_intercept',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">
+        <a class="param-doc-link"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=fit_intercept,-bool%2C%20default%3DTrue">
+            fit_intercept
+            <span class="param-doc-description">fit_intercept: bool, default=True<br><br>Specifies if a constant (a.k.a. bias or intercept) should be<br>added to the decision function.</span>
+        </a>
+    </td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('intercept_scaling',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">
+        <a class="param-doc-link"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=intercept_scaling,-float%2C%20default%3D1">
+            intercept_scaling
+            <span class="param-doc-description">intercept_scaling: float, default=1<br><br>Useful only when the solver `liblinear` is used<br>and `self.fit_intercept` is set to `True`. In this case, `x` becomes<br>`[x, self.intercept_scaling]`,<br>i.e. a "synthetic" feature with constant value equal to<br>`intercept_scaling` is appended to the instance vector.<br>The intercept becomes<br>``intercept_scaling * synthetic_feature_weight``.<br><br>.. note::<br>    The synthetic feature weight is subject to L1 or L2<br>    regularization as all other features.<br>    To lessen the effect of regularization on synthetic feature weight<br>    (and therefore on the intercept) `intercept_scaling` has to be increased.</span>
         </a>
     </td>
             <td class="value">1</td>
@@ -1098,62 +1098,14 @@ a.param-doc-link::before {
 
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('min_weight_fraction_leaf',
+                 onclick="copyToClipboard('class_weight',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=min_weight_fraction_leaf,-float%2C%20default%3D0.0">
-            min_weight_fraction_leaf
-            <span class="param-doc-description">min_weight_fraction_leaf: float, default=0.0<br><br>The minimum weighted fraction of the sum total of weights (of all<br>the input samples) required to be at a leaf node. Samples have<br>equal weight when sample_weight is not provided.<br>Values must be in the range `[0.0, 0.5]`.</span>
-        </a>
-    </td>
-            <td class="value">0.0</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('max_depth',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=max_depth,-int%20or%20None%2C%20default%3D3">
-            max_depth
-            <span class="param-doc-description">max_depth: int or None, default=3<br><br>Maximum depth of the individual regression estimators. The maximum<br>depth limits the number of nodes in the tree. Tune this parameter<br>for best performance; the best value depends on the interaction<br>of the input variables. If None, then nodes are expanded until<br>all leaves are pure or until all leaves contain less than<br>min_samples_split samples.<br>If int, values must be in the range `[1, inf)`.</span>
-        </a>
-    </td>
-            <td class="value">3</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('min_impurity_decrease',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=min_impurity_decrease,-float%2C%20default%3D0.0">
-            min_impurity_decrease
-            <span class="param-doc-description">min_impurity_decrease: float, default=0.0<br><br>A node will be split if this split induces a decrease of the impurity<br>greater than or equal to this value.<br>Values must be in the range `[0.0, inf)`.<br><br>The weighted impurity decrease equation is the following::<br><br>    N_t / N * (impurity - N_t_R / N_t * right_impurity<br>                        - N_t_L / N_t * left_impurity)<br><br>where ``N`` is the total number of samples, ``N_t`` is the number of<br>samples at the current node, ``N_t_L`` is the number of samples in the<br>left child, and ``N_t_R`` is the number of samples in the right child.<br><br>``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum,<br>if ``sample_weight`` is passed.<br><br>.. versionadded:: 0.19</span>
-        </a>
-    </td>
-            <td class="value">0.0</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('init',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=init,-estimator%20or%20%27zero%27%2C%20default%3DNone">
-            init
-            <span class="param-doc-description">init: estimator or 'zero', default=None<br><br>An estimator object that is used to compute the initial predictions.<br>``init`` has to provide :term:`fit` and :term:`predict_proba`. If<br>'zero', the initial raw predictions are set to zero. By default, a<br>``DummyEstimator`` predicting the classes priors is used.</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=class_weight,-dict%20or%20%27balanced%27%2C%20default%3DNone">
+            class_weight
+            <span class="param-doc-description">class_weight: dict or 'balanced', default=None<br><br>Weights associated with classes in the form ``{class_label: weight}``.<br>If not given, all classes are supposed to have weight one.<br><br>The "balanced" mode uses the values of y to automatically adjust<br>weights inversely proportional to class frequencies in the input data<br>as ``n_samples / (n_classes * np.bincount(y))``.<br><br>Note that these weights will be multiplied with sample_weight (passed<br>through the fit method) if sample_weight is specified.<br><br>.. versionadded:: 0.17<br>   *class_weight='balanced'*</span>
         </a>
     </td>
             <td class="value">None</td>
@@ -1167,9 +1119,9 @@ a.param-doc-link::before {
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=random_state,-int%2C%20RandomState%20instance%20or%20None%2C%20default%3DNone">
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=random_state,-int%2C%20RandomState%20instance%2C%20default%3DNone">
             random_state
-            <span class="param-doc-description">random_state: int, RandomState instance or None, default=None<br><br>Controls the random seed given to each Tree estimator at each<br>boosting iteration.<br>In addition, it controls the random permutation of the features at<br>each split (see Notes for more details).<br>It also controls the random splitting of the training data to obtain a<br>validation set if `n_iter_no_change` is not None.<br>Pass an int for reproducible output across multiple function calls.<br>See :term:`Glossary <random_state>`.</span>
+            <span class="param-doc-description">random_state: int, RandomState instance, default=None<br><br>Used when ``solver`` == 'sag', 'saga' or 'liblinear' to shuffle the<br>data. See :term:`Glossary <random_state>` for details.</span>
         </a>
     </td>
             <td class="value">42</td>
@@ -1178,17 +1130,33 @@ a.param-doc-link::before {
 
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('max_features',
+                 onclick="copyToClipboard('solver',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=max_features,-%7B%27sqrt%27%2C%20%27log2%27%7D%2C%20int%20or%20float%2C%20default%3DNone">
-            max_features
-            <span class="param-doc-description">max_features: {'sqrt', 'log2'}, int or float, default=None<br><br>The number of features to consider when looking for the best split:<br><br>- If int, values must be in the range `[1, inf)`.<br>- If float, values must be in the range `(0.0, 1.0]` and the features<br>  considered at each split will be `max(1, int(max_features * n_features_in_))`.<br>- If 'sqrt', then `max_features=sqrt(n_features)`.<br>- If 'log2', then `max_features=log2(n_features)`.<br>- If None, then `max_features=n_features`.<br><br>Choosing `max_features < n_features` leads to a reduction of variance<br>and an increase in bias.<br><br>Note: the search for a split does not stop until at least one<br>valid partition of the node samples is found, even if it requires to<br>effectively inspect more than ``max_features`` features.</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=solver,-%7B%27lbfgs%27%2C%20%27liblinear%27%2C%20%27newton-cg%27%2C%20%27newton-cholesky%27%2C%20%27sag%27%2C%20%27saga%27%7D%2C%20%20%20%20%20%20%20%20%20%20%20%20%20default%3D%27lbfgs%27">
+            solver
+            <span class="param-doc-description">solver: {'lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky', 'sag', 'saga'},             default='lbfgs'<br><br>Algorithm to use in the optimization problem. Default is 'lbfgs'.<br>To choose a solver, you might want to consider the following aspects:<br><br>- 'lbfgs' is a good default solver because it works reasonably well for a wide<br>  class of problems.<br>- For :term:`multiclass` problems (`n_classes >= 3`), all solvers except<br>  'liblinear' minimize the full multinomial loss, 'liblinear' will raise an<br>  error.<br>- 'newton-cholesky' is a good choice for<br>  `n_samples` >> `n_features * n_classes`, especially with one-hot encoded<br>  categorical features with rare categories. Be aware that the memory usage<br>  of this solver has a quadratic dependency on `n_features * n_classes`<br>  because it explicitly computes the full Hessian matrix.<br>- For small datasets, 'liblinear' is a good choice, whereas 'sag'<br>  and 'saga' are faster for large ones;<br>- 'liblinear' can only handle binary classification by default. To apply a<br>  one-versus-rest scheme for the multiclass setting one can wrap it with the<br>  :class:`~sklearn.multiclass.OneVsRestClassifier`.<br><br>.. warning::<br>   The choice of the algorithm depends on the penalty chosen (`l1_ratio=0`<br>   for L2-penalty, `l1_ratio=1` for L1-penalty and `0 < l1_ratio < 1` for<br>   Elastic-Net) and on (multinomial) multiclass support:<br><br>   ================= ======================== ======================<br>   solver            l1_ratio                 multinomial multiclass<br>   ================= ======================== ======================<br>   'lbfgs'           l1_ratio=0               yes<br>   'liblinear'       l1_ratio=1 or l1_ratio=0 no<br>   'newton-cg'       l1_ratio=0               yes<br>   'newton-cholesky' l1_ratio=0               yes<br>   'sag'             l1_ratio=0               yes<br>   'saga'            0<=l1_ratio<=1           yes<br>   ================= ======================== ======================<br><br>.. note::<br>   'sag' and 'saga' fast convergence is only guaranteed on features<br>   with approximately the same scale. You can preprocess the data with<br>   a scaler from :mod:`sklearn.preprocessing`.<br><br>.. seealso::<br>   Refer to the :ref:`User Guide <Logistic_regression>` for more<br>   information regarding :class:`LogisticRegression` and more specifically the<br>   :ref:`Table <logistic_regression_solvers>`<br>   summarizing solver/penalty supports.<br><br>.. versionadded:: 0.17<br>   Stochastic Average Gradient (SAG) descent solver. Multinomial support in<br>   version 0.18.<br>.. versionadded:: 0.19<br>   SAGA solver.<br>.. versionchanged:: 0.22<br>   The default solver changed from 'liblinear' to 'lbfgs' in 0.22.<br>.. versionadded:: 1.2<br>   newton-cholesky solver. Multinomial support in version 1.6.</span>
         </a>
     </td>
-            <td class="value">None</td>
+            <td class="value">&#x27;lbfgs&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">
+        <a class="param-doc-link"
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=max_iter,-int%2C%20default%3D100">
+            max_iter
+            <span class="param-doc-description">max_iter: int, default=100<br><br>Maximum number of iterations taken for the solvers to converge.</span>
+        </a>
+    </td>
+            <td class="value">100</td>
         </tr>
     
 
@@ -1199,28 +1167,12 @@ a.param-doc-link::before {
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=verbose,-int%2C%20default%3D0">
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=verbose,-int%2C%20default%3D0">
             verbose
-            <span class="param-doc-description">verbose: int, default=0<br><br>Enable verbose output. If 1 then it prints progress and performance<br>once in a while (the more trees the lower the frequency). If greater<br>than 1 then it prints progress and performance for every tree.<br>Values must be in the range `[0, inf)`.</span>
+            <span class="param-doc-description">verbose: int, default=0<br><br>For the liblinear and lbfgs solvers set verbose to any positive<br>number for verbosity.</span>
         </a>
     </td>
             <td class="value">0</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('max_leaf_nodes',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=max_leaf_nodes,-int%2C%20default%3DNone">
-            max_leaf_nodes
-            <span class="param-doc-description">max_leaf_nodes: int, default=None<br><br>Grow trees with ``max_leaf_nodes`` in best-first fashion.<br>Best nodes are defined as relative reduction in impurity.<br>Values must be in the range `[2, inf)`.<br>If `None`, then unlimited number of leaf nodes.</span>
-        </a>
-    </td>
-            <td class="value">None</td>
         </tr>
     
 
@@ -1231,9 +1183,9 @@ a.param-doc-link::before {
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=warm_start,-bool%2C%20default%3DFalse">
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=warm_start,-bool%2C%20default%3DFalse">
             warm_start
-            <span class="param-doc-description">warm_start: bool, default=False<br><br>When set to ``True``, reuse the solution of the previous call to fit<br>and add more estimators to the ensemble, otherwise, just erase the<br>previous solution. See :term:`the Glossary <warm_start>`.</span>
+            <span class="param-doc-description">warm_start: bool, default=False<br><br>When set to True, reuse the solution of the previous call to fit as<br>initialization, otherwise, just erase the previous solution.<br>Useless for liblinear solver. See :term:`the Glossary <warm_start>`.<br><br>.. versionadded:: 0.17<br>   *warm_start* to support *lbfgs*, *newton-cg*, *sag*, *saga* solvers.</span>
         </a>
     </td>
             <td class="value">False</td>
@@ -1242,65 +1194,17 @@ a.param-doc-link::before {
 
         <tr class="default">
             <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('validation_fraction',
+                 onclick="copyToClipboard('n_jobs',
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">
         <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=validation_fraction,-float%2C%20default%3D0.1">
-            validation_fraction
-            <span class="param-doc-description">validation_fraction: float, default=0.1<br><br>The proportion of training data to set aside as validation set for<br>early stopping. Values must be in the range `(0.0, 1.0)`.<br>Only used if ``n_iter_no_change`` is set to an integer.<br><br>.. versionadded:: 0.20</span>
-        </a>
-    </td>
-            <td class="value">0.1</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('n_iter_no_change',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=n_iter_no_change,-int%2C%20default%3DNone">
-            n_iter_no_change
-            <span class="param-doc-description">n_iter_no_change: int, default=None<br><br>``n_iter_no_change`` is used to decide if early stopping will be used<br>to terminate training when validation score is not improving. By<br>default it is set to None to disable early stopping. If set to a<br>number, it will set aside ``validation_fraction`` size of the training<br>data as validation and terminate training when validation score is not<br>improving in all of the previous ``n_iter_no_change`` numbers of<br>iterations. The split is stratified.<br>Values must be in the range `[1, inf)`.<br>See<br>:ref:`sphx_glr_auto_examples_ensemble_plot_gradient_boosting_early_stopping.py`.<br><br>.. versionadded:: 0.20</span>
+            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.linear_model.LogisticRegression.html#:~:text=n_jobs,-int%2C%20default%3DNone">
+            n_jobs
+            <span class="param-doc-description">n_jobs: int, default=None<br><br>Does not have any effect.<br><br>.. deprecated:: 1.8<br>   `n_jobs` is deprecated in version 1.8 and will be removed in 1.10.</span>
         </a>
     </td>
             <td class="value">None</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('tol',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=tol,-float%2C%20default%3D1e-4">
-            tol
-            <span class="param-doc-description">tol: float, default=1e-4<br><br>Tolerance for the early stopping. When the loss is not improving<br>by at least tol for ``n_iter_no_change`` iterations (if set to a<br>number), the training stops.<br>Values must be in the range `[0.0, inf)`.<br><br>.. versionadded:: 0.20</span>
-        </a>
-    </td>
-            <td class="value">0.0001</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('ccp_alpha',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">
-        <a class="param-doc-link"
-            rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html#:~:text=ccp_alpha,-non-negative%20float%2C%20default%3D0.0">
-            ccp_alpha
-            <span class="param-doc-description">ccp_alpha: non-negative float, default=0.0<br><br>Complexity parameter used for Minimal Cost-Complexity Pruning. The<br>subtree with the largest cost complexity that is smaller than<br>``ccp_alpha`` will be chosen. By default, no pruning is performed.<br>Values must be in the range `[0.0, inf)`.<br>See :ref:`minimal_cost_complexity_pruning` for details. See<br>:ref:`sphx_glr_auto_examples_tree_plot_cost_complexity_pruning.py`<br>for an example of such pruning.<br><br>.. versionadded:: 0.22</span>
-        </a>
-    </td>
-            <td class="value">0.0</td>
         </tr>
     
                   </tbody>
